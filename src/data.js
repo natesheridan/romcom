@@ -24,7 +24,7 @@ var titles = [
   "Stolen Hearts",
   "Secrets and Silk",
   "Dreams of Fire",
-  "Lovers and Enemies",,
+  "Lovers and Enemies",
   "Passion's Embrace",
   "Harbinger by Moonlight",
   "Rouge Red",
