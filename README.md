@@ -8,7 +8,6 @@ title: RomCom - Pair
 * Use a provided class by creating object instances using the `new` keyword
 * Manipulate the page after it has loaded adding, removing, and updating elements on the DOM
 * Understand event bubbling and use event delegation on dynamic elements
-* Begin to understand how to write effective, clean HTML & CSS
 
 ## Overview
 
@@ -99,8 +98,9 @@ To earn a given score, an application must meet the requirements listed in that 
   - All functions and variables are semantically and concisely named
   - Uses logical operators instead of if/else statements where applicable
   - Code contains no antipatterns
-* **3:**
   - Application uses event delegation correctly on dynamic elements
+
+* **3:**
   - Functions are [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) and observe [SRP](http://knnthvu.weebly.com/srp-and-dry.html)
   - Functions make use of parameters and arguments in order to be more dynamic
 * **2:**

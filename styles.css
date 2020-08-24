@@ -75,7 +75,7 @@ body {
 }
 
 .tagline {
-  background: RGBA(126, 84, 150, .5);
+  background: rgba(126, 84, 150, .5);
   color: #fcf4dc;
   padding: 5px;
   bottom: 5px;
