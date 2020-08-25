@@ -7,7 +7,6 @@ title: RomCom - Pair
 * Write clean, DRY JavaScript to store our data
 * Use a provided class by creating object instances using the `new` keyword
 * Manipulate the page after it has loaded adding, removing, and updating elements on the DOM
-* Understand event bubbling and use event delegation on dynamic elements
 
 ## Overview
 
@@ -17,7 +16,7 @@ People say that romance novels are formulaic. Well ... maybe that's true. We're 
 
 To begin, choose ONE PARTNER to do the following:
 
-1. Fork this boilerplate repository and set it to private
+1. Fork this boilerplate repository and set it to **private**
 2. Clone down your new, forked repo
 3. `cd` into the repository
 4. Open it in your text editor
@@ -40,7 +39,7 @@ By the end of the day, complete the following tasks:
 * As a team, read the entire project spec and rubric
 * As a team, create a rough timeline to follow
 * As a team, create a public document for your DTR (instructions can be found [here](https://github.com/turingschool/career-development-curriculum/blob/master/module_one/dtr_guidelines_memo.md))
-* Make sure all teammates are added as collaborators to the forked repository
+* Make sure all teammates (and assigned instructor) are added as collaborators to the forked repository
 * As a team, send a Slack message to your assigned instructor (PM) with:
   - the forked GitHub repo
   - the GitHub Pages deployed site
@@ -74,18 +73,18 @@ To earn a given score, an application must meet the requirements listed in that 
 * **3:**
   - Commits are atomic and frequent, effectively documenting the evolution/progression of the application
   - Commit messages are consistent, descriptive, and concise
-  - Team uses PRs to screen/verify code before adding it to the master branch
+  - Team uses PRs to screen/verify code before adding it to the main branch
   - There is no more than a 10% disparity in project contributions between teammates
   - README is well formatted and gives good context about the project, including links to both contributors' GitHub profiles, and to the deployed GitHub Pages site
 * **2:**
   - Commits are large and do not effectively communicate the progression of the application
-  - Team uses PRs but do not review code before merging into the master branch
+  - Team uses PRs but do not review code before merging into the main branch
   - All teammates can speak to the purpose and functionality of any/every line of code
   - There is a 20% disparity in project contributions between teammates
   - README is brief and does not provide context for the project
 * **1:**
   - Teammates do not understand the purpose and functionality of every line of code
-  - Some commits are pushed directly to the master branch
+  - Some commits are pushed directly to the main branch
   - PRs are used inconsistently
   - There is a 50% disparity in project contributions between teammates
   - There is no README, or README is insufficient
@@ -94,13 +93,13 @@ To earn a given score, an application must meet the requirements listed in that 
 
 * **4:**
   - There are no global variables aside from query selectors, `currentCover` and `savedCovers`.
+  - Application uses event delegation correctly on dynamic elements
   - All functions strictly adhere to [SRP](http://knnthvu.weebly.com/srp-and-dry.html) and - with few exceptions - are around 10 lines of code or less
   - All functions and variables are semantically and concisely named
   - Uses logical operators instead of if/else statements where applicable
   - Code contains no antipatterns
-  - Application uses event delegation correctly on dynamic elements
-
 * **3:**
+  - Demonstrate understanding of DOM manipulation by adding, removing, and updating elements on the DOM, after the page has loaded
   - Functions are [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) and observe [SRP](http://knnthvu.weebly.com/srp-and-dry.html)
   - Functions make use of parameters and arguments in order to be more dynamic
 * **2:**
