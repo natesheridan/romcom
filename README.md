@@ -16,7 +16,7 @@ People say that romance novels are formulaic. Well ... maybe that's true. We're 
 
 To begin, choose ONE PARTNER to do the following:
 
-1. Fork this boilerplate repository and set it to **private**
+1. Fork this boilerplate repository
 2. Clone down your new, forked repo
 3. `cd` into the repository
 4. Open it in your text editor
