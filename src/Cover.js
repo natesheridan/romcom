@@ -1,3 +1,4 @@
+
 class Cover {
   constructor(coverImgSrc, title, descriptor1, descriptor2) {
     this.id = Date.now();
@@ -7,3 +8,5 @@ class Cover {
     this.tagline2 = descriptor2;
   }
 }
+
+module.exports = Cover;

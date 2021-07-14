@@ -90,3 +90,7 @@ var descriptors = [
   "blessings",
   "melancholy"
 ];
+
+module.exports = [descriptors];
+module.exports = [titles];
+module.exports = [covers];
