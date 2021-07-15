@@ -1,8 +1,4 @@
-// Create variables targetting the relevant DOM elements here 👇
-var titles = require('./data.js');
-var covers = require('./data.js');
-var descriptors = require('./data.js');
-var Cover = require('./cover.js');
+// Create variables targetting the relevant DOM elements here
 
 
 // DOM VARIABLES =====================
@@ -26,6 +22,53 @@ var randomDescriptor2 = descriptors[getRandomIndex(descriptors)];
     var randomDescriptor2 = descriptors[getRandomIndex(descriptors)];
     //declares/refreshes the randomized descriptors
   }
+
+//    -=-= RANDOMIZED COVER =-=-
+
+
+// UPDATE TITLE ================
+function newTitle(){
+  //function to invoke the new title to appear
+  var randomTitle = titles[getRandomIndex(titles)];
+  //declare  randomTitle variable again to refresh the title each time the function is ran
+  title.innerText = randomTitle
+  //change the text wrapped in h2 tags in index.html to refreshed/redefine randomTitle variable.
+}
+
+
+// UPDATE COVER ================  
+  function newCover(){
+    //function to invoke a new image to appear.
+    var randomCover = covers[getRandomIndex(covers)];
+    //redeclare the randomCover variable to reload it each time the function is ran
+    cover.src = randomCover
+    //sets html id "cover-img"'s src to "randomCover" variable.
+  }
+
+
+// UPDATE TAGLINES =============
+  function newTagline(){
+    var randomDescriptor1 = descriptors[getRandomIndex(descriptors)];
+    var randomDescriptor2 = descriptors[getRandomIndex(descriptors)];
+  //we must make sure that each time the function is ran the descriptors are refreshed
+    descriptor1.innerText = randomDescriptor1
+    descriptor2.innerText = randomDescriptor2
+  //we must update each html value inside the span tags with classes tagline-<1/2>
+}
+
+
+// UPDATE WHOLE POSTER =========
+  function newPoster(){
+    // this function is used to update tagline/cover/title all at once.
+    newTagline();
+    newCover();
+    newTitle();
+  }
+
+  newPoster();
+  //invoke the function each time the page loads
+
+document.querySelector('.random-cover-button').addEventListener('click' , function(){newPoster()})
 
 
 // We've provided a few variables below
