@@ -68,7 +68,65 @@ function newTitle(){
   newPoster();
   //invoke the function each time the page loads
 
-document.querySelector('.random-cover-button').addEventListener('click' , function(){newPoster()})
+
+// variable currentview = current page with homeview being default
+// if view savedcovers button / make your own button is clicked home should reappear
+//
+
+
+//define variables for all buttons and apply event listeners to each button
+var homeBtn = document.querySelector('.home-button');
+var showNewCoverBtn = document.querySelector('.random-cover-button');
+var saveCoverBtn = document.querySelector('.save-cover-button');
+var viewSavedCoversBtn = document.querySelector('.view-saved-button');
+var makeYourOwnBtn = document.querySelector('.make-new-button');
+
+//event listeners for nav buttons - on click of button each function is ran
+homeBtn.addEventListener('click' , function(){viewHome()});
+showNewCoverBtn.addEventListener('click' , function(){newPoster()});
+saveCoverBtn.addEventListener('click' , function(){/*PUT SAVE COVER FUNCTION HERE*/});
+viewSavedCoversBtn.addEventListener('click', function(){viewSaved()});
+makeYourOwnBtn.addEventListener('click', function(){viewForm()});
+
+//define variables for access to all views provided
+var homeView = document.querySelector('.home-view');
+var savedView = document.querySelector('.saved-view');
+var formView = document.querySelector('.form-view');
+
+var currentView = homeView // define a variable that tracks which view is currently being viewed by user
+
+//button functions / functionality
+  //home button
+function viewHome (){ //this function when invoked must apply the class hidden to the other views and also hide the homebutton
+  homeView.classList.remove('hidden'); //remove hidden class from homeView
+  savedView.classList.add('hidden'); // add hidden class to savedView
+  formView.classList.add('hidden') // add hidden class to formView
+  homeBtn.classList.add('hidden'); // add hidden class to home button so it doesn't show when on home view
+  currentView = homeView; // set the currentview to home view
+}
+viewHome() // we want to run the function on page load to make sure the home button is hidden by default
+
+  //view saved covers button
+function viewSaved(){
+  savedView.classList.remove('hidden');
+  homeView.classList.add('hidden');
+  formView.classList.add('hidden');
+  saveCoverBtn.classList.add('hidden'); // we only want to see the "save cover" button while on home view
+  showNewCoverBtn.classList.add('hidden') // we only want to show the "Show new Random Cover" on home view
+  homeBtn.classList.remove('hidden'); // make sure the home buttom is showing up when on this view
+  currentView = savedView;
+}
+
+  //make your own cover button
+function viewForm(){
+  formView.classList.remove('hidden');
+  homeView.classList.add('hidden');
+  savedView.classList.add('hidden');
+  saveCoverBtn.classList.add('hidden'); // we only want to see the "save cover" button while on home view
+  showNewCoverBtn.classList.add('hidden') // we only want to show the "Show new Random Cover" on home view
+  homeBtn.classList.remove('hidden'); // make sure the home buttom is showing up when on this view
+}
+
 
 
 // We've provided a few variables below
