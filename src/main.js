@@ -103,6 +103,8 @@ function viewHome (){ //this function when invoked must apply the class hidden t
   formView.classList.add('hidden') // add hidden class to formView
   homeBtn.classList.add('hidden'); // add hidden class to home button so it doesn't show when on home view
   currentView = homeView; // set the currentview to home view
+  showNewCoverBtn.classList.remove('hidden'); // shows NewCoverBtn
+  saveCoverBtn.classList.remove('hidden'); // shows saveCoverBtn
 }
 viewHome() // we want to run the function on page load to make sure the home button is hidden by default
 
