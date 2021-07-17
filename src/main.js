@@ -27,42 +27,41 @@ var randomDescriptor2 = descriptors[getRandomIndex(descriptors)];
 
 
 // UPDATE TITLE ================
-function newTitle(){
-  //function to invoke the new title to appear
-  var randomTitle = titles[getRandomIndex(titles)];
-  //declare  randomTitle variable again to refresh the title each time the function is ran
-  title.innerText = randomTitle
-  //change the text wrapped in h2 tags in index.html to refreshed/redefine randomTitle variable.
+function newTitle(customTitle = randomTitle){
+  //function to invoke the new title to appear default value should be randomTitle
+  randomTitle = titles[getRandomIndex(titles)];
+  //declare randomTitle variable again to refresh the title each time the function is ran
+  title.innerText = customTitle
+  //change the text with title class in index.html to refreshed/redefine randomTitle variable.
 }
 
-
 // UPDATE COVER ================  
-  function newCover(){
+  function newCover(imgSrc = randomCover){
     //function to invoke a new image to appear.
-    var randomCover = covers[getRandomIndex(covers)];
+    randomCover = covers[getRandomIndex(covers)];
     //redeclare the randomCover variable to reload it each time the function is ran
-    cover.src = randomCover
+    cover.src = imgSrc
     //sets html id "cover-img"'s src to "randomCover" variable.
   }
 
 
 // UPDATE TAGLINES =============
-  function newTagline(){
+  function newTagline(tagline1 = randomDescriptor1, tagline2 = randomDescriptor2){
     var randomDescriptor1 = descriptors[getRandomIndex(descriptors)];
     var randomDescriptor2 = descriptors[getRandomIndex(descriptors)];
   //we must make sure that each time the function is ran the descriptors are refreshed
-    descriptor1.innerText = randomDescriptor1
-    descriptor2.innerText = randomDescriptor2
+    descriptor1.innerText = tagline1
+    descriptor2.innerText = tagline2
   //we must update each html value inside the span tags with classes tagline-<1/2>
 }
 
 
 // UPDATE WHOLE POSTER =========
-  function newPoster(){
+  function newPoster(title, tagline1, tagline2, imgSrc){
     // this function is used to update tagline/cover/title all at once.
-    newTagline();
-    newCover();
-    newTitle();
+    newTagline(tagline1, tagline2);
+    newCover(imgSrc);
+    newTitle(title);
   }
 
   newPoster();
