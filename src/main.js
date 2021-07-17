@@ -5,8 +5,8 @@
 
 var title = document.querySelector('.cover-title');
 var cover = document.querySelector('.cover-image');
-var descriptor1 = document.querySelector('.tagline-1')
-var descriptor2 = document.querySelector('.tagline-2')
+var tl1 = document.querySelector('.tagline-1')
+var tl2 = document.querySelector('.tagline-2')
 
 // RELEVANT RANDOMIZED VARIABLES =====
 var randomTitle = titles[getRandomIndex(titles)];
@@ -47,11 +47,11 @@ function newTitle(customTitle = randomTitle){
 
 // UPDATE TAGLINES =============
   function newTagline(tagline1 = randomDescriptor1, tagline2 = randomDescriptor2){
-    var randomDescriptor1 = descriptors[getRandomIndex(descriptors)];
-    var randomDescriptor2 = descriptors[getRandomIndex(descriptors)];
+    randomDescriptor1 = descriptors[getRandomIndex(descriptors)];
+    randomDescriptor2 = descriptors[getRandomIndex(descriptors)];
   //we must make sure that each time the function is ran the descriptors are refreshed
-    descriptor1.innerText = tagline1
-    descriptor2.innerText = tagline2
+    tl1.innerText = tagline1
+    tl2.innerText = tagline2
   //we must update each html value inside the span tags with classes tagline-<1/2>
 }
 
