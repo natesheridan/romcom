@@ -5,8 +5,8 @@
 
 var title = document.querySelector('.cover-title');
 var cover = document.querySelector('.cover-image');
-var descriptor1 = document.querySelector('.tagline-1')
-var descriptor2 = document.querySelector('.tagline-2')
+var tl1 = document.querySelector('.tagline-1')
+var tl2 = document.querySelector('.tagline-2')
 
 // RELEVANT RANDOMIZED VARIABLES =====
 var randomTitle = titles[getRandomIndex(titles)];
@@ -27,51 +27,58 @@ var randomDescriptor2 = descriptors[getRandomIndex(descriptors)];
 
 
 // UPDATE TITLE ================
-function newTitle(){
-  //function to invoke the new title to appear
-  var randomTitle = titles[getRandomIndex(titles)];
-  //declare  randomTitle variable again to refresh the title each time the function is ran
-  title.innerText = randomTitle
-  //change the text wrapped in h2 tags in index.html to refreshed/redefine randomTitle variable.
+function newTitle(customTitle = randomTitle){
+  //function to invoke the new title to appear default value should be randomTitle
+  randomTitle = titles[getRandomIndex(titles)];
+  //declare randomTitle variable again to refresh the title each time the function is ran
+  title.innerText = customTitle
+  //change the text with title class in index.html to refreshed/redefine randomTitle variable.
 }
 
-
 // UPDATE COVER ================  
-  function newCover(){
+  function newCover(imgSrc = randomCover){
     //function to invoke a new image to appear.
-    var randomCover = covers[getRandomIndex(covers)];
+    randomCover = covers[getRandomIndex(covers)];
     //redeclare the randomCover variable to reload it each time the function is ran
-    cover.src = randomCover
+    cover.src = imgSrc
     //sets html id "cover-img"'s src to "randomCover" variable.
   }
 
 
 // UPDATE TAGLINES =============
-  function newTagline(){
-    var randomDescriptor1 = descriptors[getRandomIndex(descriptors)];
-    var randomDescriptor2 = descriptors[getRandomIndex(descriptors)];
+  function newTagline(tagline1 = randomDescriptor1, tagline2 = randomDescriptor2){
+    randomDescriptor1 = descriptors[getRandomIndex(descriptors)];
+    randomDescriptor2 = descriptors[getRandomIndex(descriptors)];
   //we must make sure that each time the function is ran the descriptors are refreshed
-    descriptor1.innerText = randomDescriptor1
-    descriptor2.innerText = randomDescriptor2
+    tl1.innerText = tagline1
+    tl2.innerText = tagline2
   //we must update each html value inside the span tags with classes tagline-<1/2>
 }
 
 
 // UPDATE WHOLE POSTER =========
-  function newPoster(){
-    // this function is used to update tagline/cover/title all at once.
-    newTagline();
-    newCover();
-    newTitle();
+  function newPoster(title, tagline1, tagline2, imgSrc){ 
+    newTagline(tagline1, tagline2);
+    newCover(imgSrc);
+    newTitle(title);
   }
-
   newPoster();
-  //invoke the function each time the page loads
+
+// CREATING CUSTOM COVER =======
+  //we need to define the input forms as variables:
+  var userTitle = document.querySelector('.user-title');
+  var userDesc1 = document.querySelector('.user-desc1')
+  var userDesc2 = document.querySelector('.user-desc2')
+  var userCover = document.querySelector('.user-cover');
+
+  //this function should only be ran if the button is pressed.
+function makeMyBook(){
+  viewHome();
+  event.preventDefault();
+  newPoster(userTitle.value, userDesc1.value, userDesc2.value, userCover.value)
+}
 
 
-// variable currentview = current page with homeview being default
-// if view savedcovers button / make your own button is clicked home should reappear
-//
 
 
 //define variables for all buttons and apply event listeners to each button
@@ -80,6 +87,7 @@ var showNewCoverBtn = document.querySelector('.random-cover-button');
 var saveCoverBtn = document.querySelector('.save-cover-button');
 var viewSavedCoversBtn = document.querySelector('.view-saved-button');
 var makeYourOwnBtn = document.querySelector('.make-new-button');
+var makeMyBookBtn = document.querySelector('.create-new-book-button');
 
 //event listeners for nav buttons - on click of button each function is ran
 homeBtn.addEventListener('click' , function(){viewHome()});
@@ -87,6 +95,7 @@ showNewCoverBtn.addEventListener('click' , function(){newPoster()});
 saveCoverBtn.addEventListener('click' , function(){/*PUT SAVE COVER FUNCTION HERE*/});
 viewSavedCoversBtn.addEventListener('click', function(){viewSaved()});
 makeYourOwnBtn.addEventListener('click', function(){viewForm()});
+makeMyBookBtn.addEventListener('click', function(){makeMyBook()})
 
 //define variables for access to all views provided
 var homeView = document.querySelector('.home-view');
@@ -102,7 +111,6 @@ function viewHome (){ //this function when invoked must apply the class hidden t
   savedView.classList.add('hidden'); // add hidden class to savedView
   formView.classList.add('hidden') // add hidden class to formView
   homeBtn.classList.add('hidden'); // add hidden class to home button so it doesn't show when on home view
-  currentView = homeView; // set the currentview to home view
   showNewCoverBtn.classList.remove('hidden'); // shows NewCoverBtn
   saveCoverBtn.classList.remove('hidden'); // shows saveCoverBtn
 }
