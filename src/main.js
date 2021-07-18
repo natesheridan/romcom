@@ -71,6 +71,7 @@ function newTitle(customTitle = randomTitle){
   var userDesc2 = document.querySelector('.user-desc2')
   var userCover = document.querySelector('.user-cover');
 
+  //making custom poster with user input values
   //this function should only be ran if the button is pressed.
 function makeMyBook(){
   viewHome();
@@ -78,9 +79,8 @@ function makeMyBook(){
   newPoster(userTitle.value, userDesc1.value, userDesc2.value, userCover.value)
   covers.push(userCover.value)
   titles.push(userTitle.value)
-  userArray.push(new Poster(userTitle.value, userDesc1.value, userDesc2.value, userCover.value))
+  savedCovers.push(new Poster(userTitle.value, userDesc1.value, userDesc2.value, userCover.value))
 }
-
 
 
 
@@ -91,12 +91,12 @@ class Poster{
     this.tl2 = tl2;
     this.cover = cover;
   }
-  savePoster(){
-
-  }
 }
-var userArray = []
 
+//Saving covers
+function saveCover(){
+  savedCovers.push(new Poster(title.innerText, tl1.innerText, tl2.innerText, cover.src))
+}
 
 
 
@@ -111,7 +111,7 @@ var makeMyBookBtn = document.querySelector('.create-new-book-button');
 //event listeners for nav buttons - on click of button each function is ran
 homeBtn.addEventListener('click' , function(){viewHome()});
 showNewCoverBtn.addEventListener('click' , function(){newPoster()});
-saveCoverBtn.addEventListener('click' , function(){/*PUT SAVE COVER FUNCTION HERE*/});
+saveCoverBtn.addEventListener('click' , saveCover);
 viewSavedCoversBtn.addEventListener('click', function(){viewSaved()});
 makeYourOwnBtn.addEventListener('click', function(){viewForm()});
 makeMyBookBtn.addEventListener('click', function(){makeMyBook()})
@@ -159,9 +159,10 @@ function viewForm(){
 
 
 // We've provided a few variables below
-// var savedCovers = [
-//   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-// ];
+var savedCovers = [
+  //saved covers should be saved in the format - Title, Desc1, Desc2, CoverImgSrc
+  new Poster("Shrek", "Shrek", "more Shrek", "https://img.moviepostershop.com/shrek-movie-poster-2001-1020189592.jpg")
+];
 // var currentCover;
 
 // Add your event listeners here 👇
