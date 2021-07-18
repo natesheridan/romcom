@@ -57,20 +57,28 @@ function newTitle(customTitle = randomTitle){
 
 
 // UPDATE WHOLE POSTER =========
-  function newPoster(title, tagline1, tagline2, imgSrc){
-    // this function is used to update tagline/cover/title all at once.
+  function newPoster(title, tagline1, tagline2, imgSrc){ 
     newTagline(tagline1, tagline2);
     newCover(imgSrc);
     newTitle(title);
   }
-
   newPoster();
-  //invoke the function each time the page loads
+
+// CREATING CUSTOM COVER =======
+  //we need to define the input forms as variables:
+  var userTitle = document.querySelector('.user-title');
+  var userDesc1 = document.querySelector('.user-desc1')
+  var userDesc2 = document.querySelector('.user-desc2')
+  var userCover = document.querySelector('.user-cover');
+
+  //this function should only be ran if the button is pressed.
+function makeMyBook(){
+  viewHome();
+  event.preventDefault();
+  newPoster(userTitle.value, userDesc1.value, userDesc2.value, userCover.value)
+}
 
 
-// variable currentview = current page with homeview being default
-// if view savedcovers button / make your own button is clicked home should reappear
-//
 
 
 //define variables for all buttons and apply event listeners to each button
@@ -79,6 +87,7 @@ var showNewCoverBtn = document.querySelector('.random-cover-button');
 var saveCoverBtn = document.querySelector('.save-cover-button');
 var viewSavedCoversBtn = document.querySelector('.view-saved-button');
 var makeYourOwnBtn = document.querySelector('.make-new-button');
+var makeMyBookBtn = document.querySelector('.create-new-book-button');
 
 //event listeners for nav buttons - on click of button each function is ran
 homeBtn.addEventListener('click' , function(){viewHome()});
@@ -86,6 +95,7 @@ showNewCoverBtn.addEventListener('click' , function(){newPoster()});
 saveCoverBtn.addEventListener('click' , function(){/*PUT SAVE COVER FUNCTION HERE*/});
 viewSavedCoversBtn.addEventListener('click', function(){viewSaved()});
 makeYourOwnBtn.addEventListener('click', function(){viewForm()});
+makeMyBookBtn.addEventListener('click', function(){makeMyBook()})
 
 //define variables for access to all views provided
 var homeView = document.querySelector('.home-view');
@@ -101,7 +111,6 @@ function viewHome (){ //this function when invoked must apply the class hidden t
   savedView.classList.add('hidden'); // add hidden class to savedView
   formView.classList.add('hidden') // add hidden class to formView
   homeBtn.classList.add('hidden'); // add hidden class to home button so it doesn't show when on home view
-  currentView = homeView; // set the currentview to home view
   showNewCoverBtn.classList.remove('hidden'); // shows NewCoverBtn
   saveCoverBtn.classList.remove('hidden'); // shows saveCoverBtn
 }
