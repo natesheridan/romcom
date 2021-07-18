@@ -78,9 +78,11 @@ function makeMyBook(){
   newPoster(userTitle.value, userDesc1.value, userDesc2.value, userCover.value)
   covers.push(userCover.value)
   titles.push(userTitle.value)
-  descriptors.push(userDesc1.value)
-  var userTitle.value = new Poster(userTitle.value, userDesc1.value, userDesc2.value, userCover.value)
+  userArray.push(new Poster(userTitle.value, userDesc1.value, userDesc2.value, userCover.value))
 }
+
+
+
 
 class Poster{
   constructor(title, tl1, tl2, cover){
@@ -93,8 +95,7 @@ class Poster{
 
   }
 }
-
-user
+var userArray = []
 
 
 
