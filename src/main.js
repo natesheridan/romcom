@@ -76,7 +76,26 @@ function makeMyBook(){
   viewHome();
   event.preventDefault();
   newPoster(userTitle.value, userDesc1.value, userDesc2.value, userCover.value)
+  covers.push(userCover.value)
+  titles.push(userTitle.value)
+  userArray.push(new Poster(userTitle.value, userDesc1.value, userDesc2.value, userCover.value))
 }
+
+
+
+
+class Poster{
+  constructor(title, tl1, tl2, cover){
+    this.title = title;
+    this.tl1 = tl1;
+    this.tl2 = tl2;
+    this.cover = cover;
+  }
+  savePoster(){
+
+  }
+}
+var userArray = []
 
 
 
