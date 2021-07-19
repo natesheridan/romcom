@@ -79,35 +79,48 @@ function makeMyBook(){
   newPoster(userTitle.value, userDesc1.value, userDesc2.value, userCover.value)
   covers.push(userCover.value)
   titles.push(userTitle.value)
+  // saveCoverBtn.classList.add("hidden"); // maybe prevent duplicate saves this way
   savedCovers.push(new Poster(userTitle.value, userDesc1.value, userDesc2.value, userCover.value))
 }
 
 
 
 class Poster{
-  constructor(title, tl1, tl2, cover){
+  constructor(title, tl1, tl2, cover = randomCover){
     this.title = title;
     this.tl1 = tl1;
     this.tl2 = tl2;
     this.cover = cover;
+    this.ID = this.title + this.tl1 + this.tl2 + this.cover;
   }
 
 }
+
+
+
+
+var savedCovers = [ //saved covers should be saved in the format - Title, Desc1, Desc2, CoverImgSrc
+  new Poster("Shrek", "Shrek", "more Shrek", "https://static.wikia.nocookie.net/shrek/images/7/7c/1754181-b.jpg/revision/latest/scale-to-width-down/250?cb=20210619181030"),
+];
+
+var isDupicate
 
 //Saving covers
+var currentCover = new Poster(title.innerText, tl1.innerText, tl2.innerText, cover.src)
+
 
 function saveCover(){
-  if (savedCovers.includes()=== false){
-    savedCovers.push()
+var currentCover = new Poster(title.innerText, tl1.innerText, tl2.innerText, cover.src)
+    if (savedCovers.some(savedCover => savedCover.ID === currentCover.ID) === false){
+    savedCovers.push(new Poster(title.innerText, tl1.innerText, tl2.innerText, cover.src))
   }
 }
+
+
 //populating all saved covers and adding each
 
 //saved cover section
-var savedCovers = [
-  //saved covers should be saved in the format - Title, Desc1, Desc2, CoverImgSrc
-  new Poster("Shrek", "Shrek", "more Shrek", "https://static.wikia.nocookie.net/shrek/images/7/7c/1754181-b.jpg/revision/latest/scale-to-width-down/250?cb=20210619181030")
-];
+
 
 var inArray = (savedCovers.inArray===new Poster(title.innerText, tl1.innerText, tl2.innerText, cover.src));
 
