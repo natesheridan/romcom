@@ -12,7 +12,7 @@ This project uses the Document Object Model, otherwise known as the DOM to manip
 2. CSS
 3. JavaScript
 
-### Future Addtions
+### Future Additions
 - Ability to drag and drop covers
 - Ability to delete covers from saved view
 - Integration with social media sites to be able to share covers
