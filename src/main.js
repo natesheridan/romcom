@@ -71,6 +71,7 @@ function newTitle(customTitle = randomTitle){
   var userDesc2 = document.querySelector('.user-desc2')
   var userCover = document.querySelector('.user-cover');
 
+  //making custom poster with user input values
   //this function should only be ran if the button is pressed.
 function makeMyBook(){
   viewHome();
@@ -78,28 +79,65 @@ function makeMyBook(){
   newPoster(userTitle.value, userDesc1.value, userDesc2.value, userCover.value)
   covers.push(userCover.value)
   titles.push(userTitle.value)
-  userArray.push(new Poster(userTitle.value, userDesc1.value, userDesc2.value, userCover.value))
+  // saveCoverBtn.classList.add("hidden"); // maybe prevent duplicate saves this way
+  savedCovers.push(new Poster(userTitle.value, userDesc1.value, userDesc2.value, userCover.value))
 }
-
 
 
 
 class Poster{
-  constructor(title, tl1, tl2, cover){
+  constructor(title, tl1, tl2, cover = randomCover){
     this.title = title;
     this.tl1 = tl1;
     this.tl2 = tl2;
     this.cover = cover;
+    this.ID = this.title + this.tl1 + this.tl2 + this.cover;
   }
-  savePoster(){
 
+}
+
+
+
+
+var savedCovers = [ //saved covers should be saved in the format - Title, Desc1, Desc2, CoverImgSrc
+  new Poster("Shrek", "Shrek", "more Shrek", "https://static.wikia.nocookie.net/shrek/images/7/7c/1754181-b.jpg/revision/latest/scale-to-width-down/250?cb=20210619181030"),
+];
+
+var isDupicate
+
+//Saving covers
+var currentCover = new Poster(title.innerText, tl1.innerText, tl2.innerText, cover.src)
+
+
+function saveCover(){
+var currentCover = new Poster(title.innerText, tl1.innerText, tl2.innerText, cover.src)
+    if (savedCovers.some(savedCover => savedCover.ID === currentCover.ID) === false){
+    savedCovers.push(new Poster(title.innerText, tl1.innerText, tl2.innerText, cover.src))
   }
 }
-var userArray = []
 
 
+//populating all saved covers and adding each
+
+//saved cover section
 
 
+var inArray = (savedCovers.inArray===new Poster(title.innerText, tl1.innerText, tl2.innerText, cover.src));
+
+var savedCoverSection = document.querySelector('.saved-covers-section');
+
+function updateCovers(){
+  document.querySelector('.saved-covers-section').innerHTML = ""
+for (var i = 0; i < savedCovers.length; i++){ 
+  savedCoverSection.insertAdjacentHTML(`beforeend`, `
+  <section class="mini-cover">
+  <img class="cover-image" src="${savedCovers[i].cover}">
+  <p class="cover-title">${savedCovers[i].title}</p>
+  <p class="tagline">A tale of ${savedCovers[i].tl1} and ${savedCovers[i].tl2}</p>
+</section>
+  `)   
+  }
+}
 //define variables for all buttons and apply event listeners to each button
 var homeBtn = document.querySelector('.home-button');
 var showNewCoverBtn = document.querySelector('.random-cover-button');
@@ -111,7 +149,7 @@ var makeMyBookBtn = document.querySelector('.create-new-book-button');
 //event listeners for nav buttons - on click of button each function is ran
 homeBtn.addEventListener('click' , function(){viewHome()});
 showNewCoverBtn.addEventListener('click' , function(){newPoster()});
-saveCoverBtn.addEventListener('click' , function(){/*PUT SAVE COVER FUNCTION HERE*/});
+saveCoverBtn.addEventListener('click' , saveCover);
 viewSavedCoversBtn.addEventListener('click', function(){viewSaved()});
 makeYourOwnBtn.addEventListener('click', function(){viewForm()});
 makeMyBookBtn.addEventListener('click', function(){makeMyBook()})
@@ -144,6 +182,7 @@ function viewSaved(){
   showNewCoverBtn.classList.add('hidden') // we only want to show the "Show new Random Cover" on home view
   homeBtn.classList.remove('hidden'); // make sure the home buttom is showing up when on this view
   currentView = savedView;
+  updateCovers();
 }
 
   //make your own cover button
@@ -159,10 +198,8 @@ function viewForm(){
 
 
 // We've provided a few variables below
-// var savedCovers = [
-//   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-// ];
-// var currentCover;
+
+
 
 // Add your event listeners here 👇
 
