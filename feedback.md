@@ -17,7 +17,7 @@ JavaScript Style & Implementation
     savedCovers.push(new Poster(title.innerText, tl1.innerText, tl2.innerText, cover.src))
   }
 }`
-Your Conditional coul dhave been written as - `if (!savedCovers.some(savedCover => savedCover.ID === currentCover.ID))`
+Your Conditional could have been written as - `if (!savedCovers.some(savedCover => savedCover.ID === currentCover.ID))`
 * There is not a need for a poster class because it does the same thing as the cover class.
 * Don’t need anonymous functions in the event listeners - just use the named functions
 * `makeYourOwnBtn.addEventListener('click', function(){viewForm()});`
